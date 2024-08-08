@@ -1,29 +1,16 @@
-import Message from "./Message";
-import Alert from "./components/Alert";
-import ListGroup from "./components/ListGroup";
+import ButtonComponent from "./components/ButtonComponent";
 
 function App() {
-  let fruits = ["Apples", "Bananas", "Cherrys", "Durians", "Strawberries"];
-  //fruits = [];
-  let cities = ["Leeds", "Wakefield", "Huddersfield"];
-
-  const handleSelectItem = (item: string) => {
-    console.log(item);
-  };
-
   return (
     <div>
-      {/* 
-        <Message />
-        <ListGroup
-          items={fruits}
-          heading="Fruit Bowl"
-          onSelectItem={handleSelectItem}
-        />
-      */}
-      <Alert>
-        A simple primary <span>alert!</span>
-      </Alert>
+      <ButtonComponent
+        buttonClicked={() => console.log("Clicked")}
+        colour="success"
+        outline="dark"
+        size="sm"
+      >
+        Button
+      </ButtonComponent>
     </div>
   );
 }

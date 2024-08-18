@@ -1,42 +1,39 @@
-import { ReactNode } from "react";
-
 interface Props {
   buttonClicked: () => void;
   children: string;
-  colour?: "primary" | "secondary" | "success" | "danger";
+  colour: "primary" | "secondary" | "success" | "warning" | "danger";
+  disable?: boolean;
+  gridshit?: string;
   outline: string;
-  size: string;
+  size?: "sm" | "lg";
 }
 
 const ButtonComponent = ({
   buttonClicked,
   children,
   colour = "primary",
+  disable,
+  gridshit,
   outline,
   size,
 }: Props) => {
   return (
     <div>
       <button
-        type="button"
         className={
-          "btn btn-" + colour + " btn-outline-" + outline + " btn-" + size
+          "btn btn-" +
+          colour +
+          " btn-outline-" +
+          outline +
+          " btn-" +
+          size +
+          " btn-" +
+          gridshit
         }
+        disabled={disable ? true : false}
         onClick={buttonClicked}
       >
-        'lil {children}
-      </button>
-      <button className="btn btn-warning btn-outline-dark">
-        reg {children}
-      </button>
-      <button className="btn btn-danger btn-outline-dark btn-lg">
-        larg {children}
-      </button>
-      <button className="btn btn-primary d-grid gap-2 col-6 mx-auto">
-        Enabled {children}
-      </button>
-      <button className="btn btn-primary d-grid gap-2 col-6 mx-auto" disabled>
-        Disabled {children}
+        {children} Button
       </button>
     </div>
   );

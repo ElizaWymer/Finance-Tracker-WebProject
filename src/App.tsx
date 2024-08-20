@@ -1,51 +1,24 @@
+import { useState } from "react";
+import Alert from "./components/Alert";
 import ButtonComponent from "./components/ButtonComponent";
 
 function App() {
+  const [alertVisable, setAlertVisability] = useState(false);
+
   return (
     <div>
+      {alertVisable && (
+        <Alert onClose={() => setAlertVisability(false)}>
+          The world is ending!!!
+        </Alert>
+      )}
       <ButtonComponent
-        buttonClicked={() => console.log("Clicked")}
-        colour="success"
-        outline="dark"
-        size="sm"
-      >
-        'Lil
-      </ButtonComponent>
-
-      <ButtonComponent
-        buttonClicked={() => console.log("Clicked")}
-        colour="warning"
-        outline="dark"
-      >
-        Regular
-      </ButtonComponent>
-
-      <ButtonComponent
-        buttonClicked={() => console.log("Clicked")}
+        buttonClicked={() => setAlertVisability(true)}
         colour="danger"
         outline="dark"
         size="lg"
       >
-        Big
-      </ButtonComponent>
-
-      <ButtonComponent
-        buttonClicked={() => console.log("Clicked")}
-        colour="primary"
-        outline="dark"
-        gridshit="d-grid gap-2 col-3 mx-auto"
-      >
-        Enabled & Gridded
-      </ButtonComponent>
-
-      <ButtonComponent
-        buttonClicked={() => console.log("Clicked")}
-        colour="primary"
-        outline="dark"
-        gridshit="d-grid gap-2 col-3 mx-auto"
-        disable={true}
-      >
-        Disabled & Gridded
+        Big Red Button of Doom
       </ButtonComponent>
     </div>
   );

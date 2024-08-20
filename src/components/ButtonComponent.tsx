@@ -33,7 +33,7 @@ const ButtonComponent = ({
         disabled={disable ? true : false}
         onClick={buttonClicked}
       >
-        {children} Button
+        {children}
       </button>
     </div>
   );

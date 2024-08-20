@@ -1,25 +1,23 @@
-import { useState } from "react";
-import Alert from "./components/Alert";
-import ButtonComponent from "./components/ButtonComponent";
+import Message from "./Message";
+import ListGroup from "./components/ListGroup";
 
 function App() {
-  const [alertVisable, setAlertVisability] = useState(false);
+  let fruits = ["Apples", "Bananas", "Cherrys", "Durians", "Strawberries"];
+  //fruits = [];
+  let cities = ["Leeds", "Wakefield", "Huddersfield"];
+
+  const handleSelectItem = (item: string) => {
+    console.log(item);
+  };
 
   return (
     <div>
-      {alertVisable && (
-        <Alert onClose={() => setAlertVisability(false)}>
-          The world is ending!!!
-        </Alert>
-      )}
-      <ButtonComponent
-        buttonClicked={() => setAlertVisability(true)}
-        colour="danger"
-        outline="dark"
-        size="lg"
-      >
-        Big Red Button of Doom
-      </ButtonComponent>
+      <Message />{" "}
+      <ListGroup
+        items={cities}
+        heading="Cities of West Yorkshire"
+        onSelectItem={handleSelectItem}
+      />
     </div>
   );
 }

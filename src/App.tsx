@@ -1,10 +1,10 @@
 import Message from "./Message";
-import ListGroup from "./components/ListGroup";
+import ListGroup from "./components/ListGroup/index";
 
 function App() {
   let fruits = ["Apples", "Bananas", "Cherrys", "Durians", "Strawberries"];
   //fruits = [];
-  let cities = ["Leeds", "Wakefield", "Huddersfield"];
+  //let cities = ["Leeds", "Wakefield", "Huddersfield"];
 
   const handleSelectItem = (item: string) => {
     console.log(item);
@@ -14,8 +14,8 @@ function App() {
     <div>
       <Message />{" "}
       <ListGroup
-        items={cities}
-        heading="Cities of West Yorkshire"
+        items={fruits}
+        heading="Fruit Bowl"
         onSelectItem={handleSelectItem}
       />
     </div>

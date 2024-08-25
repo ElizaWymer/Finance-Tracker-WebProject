@@ -1,0 +1,15 @@
+.defaultLikeComponent
+{
+    border: 2px solid;
+}
+
+
+.unclickedLikeComponent
+{
+    color: lightgrey;
+}
+
+.clickedLikeComponent
+{
+    color: rgb(214, 51, 51);
+}

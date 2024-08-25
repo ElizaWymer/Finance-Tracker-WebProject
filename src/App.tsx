@@ -1,9 +1,9 @@
-import { FaCat } from "react-icons/fa";
+import LikeComponent from "./components/LikeComponent/index";
 
 function App() {
   return (
     <div>
-      <FaCat color="blue" size="50" />
+      <LikeComponent />
     </div>
   );
 }

@@ -1,3 +1,5 @@
+import ButtonStyle from "./ButtonComponent.module.css";
+
 interface Props {
   buttonClicked: () => void;
   children: string;
@@ -20,16 +22,10 @@ const ButtonComponent = ({
   return (
     <div>
       <button
-        className={
-          "btn btn-" +
-          colour +
-          " btn-outline-" +
-          outline +
-          " btn-" +
-          size +
-          " btn-" +
-          gridshit
-        }
+        className={[
+          ButtonStyle.buttonComponent,
+          ButtonStyle["button" + colour],
+        ].join(" ")}
         disabled={disable ? true : false}
         onClick={buttonClicked}
       >

@@ -1,0 +1,12 @@
+.buttonComponent
+{
+    padding: 5;
+    border: 2;
+}
+
+.buttonprimary
+{
+    background-color: #0d6efd;
+    color: white;
+    size: 10;
+}

@@ -1,30 +1,14 @@
 import { useState } from "react";
-import produce from "immer";
+import ItemTracker from "./components/ItemTracker";
+import Cart from "./components/Cart";
 
 function App() {
-  const [customer, setCustomer] = useState({
-    name: "Elizabeth",
-    address: { city: "Huddersfield", postcode: "HD1" },
-  });
-
-  const handleClick = () => {
-    setCustomer({
-      ...customer,
-      address: { ...customer.address, postcode: "HD2" },
-    });
-  };
+  const [cartItems, setCartItems] = useState(["Product 1", "Product 2"]);
 
   return (
     <div>
-      {customer.name}'s' Postcode: {customer.address.postcode}
-      <br></br> <br></br>
-      <button
-        onClick={() => {
-          handleClick();
-        }}
-      >
-        Update Postcode
-      </button>
+      <ItemTracker cartItemsCount={cartItems.length}></ItemTracker>
+      <Cart cartItems={cartItems} onClear={() => setCartItems([])} />
     </div>
   );
 }

@@ -1,18 +1,15 @@
 import { useState } from "react";
 
 function App() {
-  const [bugs, setBugs] = useState([
-    { id: 1, title: "Bug 1", fixed: false },
-    { id: 2, title: "Bug 2", fixed: false },
-  ]);
+  const [moods, setMood] = useState(["Happy", "Sad", "Angry"]);
 
   const handleClick = () => {
-    setBugs(
-      bugs.map(
-        (bug) => (bug.id === 1 ? { ...bug, fixed: true } : bug),
-        console.log(bugs)
-      )
-    );
+    setMood([...moods, "Fear"]);
+    console.log([...moods, "Fear"]);
+    setMood(moods.filter((mood) => mood !== "Angry"));
+    console.log(moods.filter((mood) => mood !== "Angry"));
+    setMood(moods.map((mood) => (mood === "Happy" ? "Joy" : mood)));
+    console.log(moods.map((mood) => (mood === "Happy" ? "Joy" : mood)));
   };
 
   return (

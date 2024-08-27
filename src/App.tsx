@@ -1,14 +1,21 @@
 import { useState } from "react";
-import ItemTracker from "./components/ItemTracker";
-import Cart from "./components/Cart";
 
 function App() {
-  const [cartItems, setCartItems] = useState(["Product 1", "Product 2"]);
+  const [drink, setDrink] = useState({ name: "Hot Chocolate", price: 3 });
+
+  const handleClick = () => {
+    setDrink({
+      ...drink,
+      //price: 3.75,
+      price: drink.price + 1,
+    });
+  };
 
   return (
     <div>
-      <ItemTracker cartItemsCount={cartItems.length}></ItemTracker>
-      <Cart cartItems={cartItems} onClear={() => setCartItems([])} />
+      {drink.name}: £{drink.price}
+      <br></br> <br></br>
+      <button onClick={handleClick}> Equate for Inflation</button>
     </div>
   );
 }

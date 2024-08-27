@@ -2,33 +2,28 @@ import { useState } from "react";
 import produce from "immer";
 
 function App() {
-  const [bugs, setBugs] = useState([
-    { id: 1, title: "Bug 1", fixed: false },
-    { id: 2, title: "Bug 2", fixed: false },
-  ]);
+  const [customer, setCustomer] = useState({
+    name: "Elizabeth",
+    address: { city: "Huddersfield", postcode: "HD1" },
+  });
 
   const handleClick = () => {
-    setBugs(
-      produce((draft) => {
-        const bug = draft.find((bug) => bug.id === 1);
-        if (bug) bug.fixed = true;
-      })
-    );
+    setCustomer({
+      ...customer,
+      address: { ...customer.address, postcode: "HD2" },
+    });
   };
 
   return (
     <div>
-      {bugs.map((bug) => (
-        <p key={bug.id}>
-          {bug.title}: {bug.fixed ? "Fixed" : "New"}
-        </p>
-      ))}
+      {customer.name}'s' Postcode: {customer.address.postcode}
+      <br></br> <br></br>
       <button
         onClick={() => {
           handleClick();
         }}
       >
-        Click Me
+        Update Postcode
       </button>
     </div>
   );

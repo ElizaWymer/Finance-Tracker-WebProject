@@ -1,21 +1,18 @@
 import { useState } from "react";
 
 function App() {
-  const [cart, setCart] = useState({
-    discount: 0.1,
-    items: [
-      { id: 1, title: "Product 1", quantity: 15 },
-      { id: 2, title: "Product 2", quantity: 7 },
-    ],
-  });
+  const [bugs, setBugs] = useState([
+    { id: 1, title: "Bug 1", fixed: false },
+    { id: 2, title: "Bug 2", fixed: false },
+  ]);
 
   const handleClick = () => {
-    setCart({
-      ...cart,
-      items: cart.items.map((item) =>
-        item.id === 1 ? { ...item, quantity: (item.quantity -= 1) } : item
-      ),
-    });
+    setBugs(
+      bugs.map(
+        (bug) => (bug.id === 1 ? { ...bug, fixed: true } : bug),
+        console.log(bugs)
+      )
+    );
   };
 
   return (
@@ -25,7 +22,6 @@ function App() {
           handleClick();
         }}
       ></button>
-      Item quanity: {cart.items[0].quantity}
     </div>
   );
 }

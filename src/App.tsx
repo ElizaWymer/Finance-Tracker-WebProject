@@ -1,22 +1,24 @@
-import { useState } from "react";
-import ExpandableText from "./components/ExpandableText";
+import ButtonComponent from "./components/ButtonComponent/index";
+import InputBoxes from "./components/Expense Tracker/InputBoxes";
+import Table from "./components/Expense Tracker/Table";
 
 function App() {
   return (
     <div>
-      <ExpandableText>
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sequi qui non
-        rerum dolorem id, illo culpa fuga excepturi voluptatibus dicta quae quia
-        consectetur sint consequuntur! Veniam modi, nostrum asperiores
-        dignissimos optio tenetur, ab neque minus corporis, officiis ipsam eius.
-        Autem a omnis, beatae cum mollitia praesentium ullam eaque aliquid at ad
-        facere harum modi fugit vel. Eveniet ratione deserunt deleniti nisi nemo
-        odit, perferendis recusandae, magnam labore tempore sapiente, voluptatum
-        eligendi minus qui culpa nihil quibusdam. Doloremque, enim cum! Ipsa
-        alias exercitationem ullam quis, iste voluptate quaerat quidem fugiat
-        suscipit rem nisi iure eaque saepe voluptas blanditiis molestiae aut
-        similique.
-      </ExpandableText>
+      <InputBoxes label="Description" />
+      <InputBoxes label="Amount" />
+      <InputBoxes label="Category" isDropDown />
+      <ButtonComponent
+        buttonClicked={() => {
+          console.log("Clicked");
+        }}
+        colour="primary"
+        outline=""
+      >
+        Submit
+      </ButtonComponent>
+      <InputBoxes isDropDown> All Categories </InputBoxes>
+      <Table></Table>
     </div>
   );
 }

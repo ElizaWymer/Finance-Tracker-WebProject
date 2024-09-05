@@ -1,22 +1,52 @@
 import { useState } from "react";
-import ExpandableText from "./components/ExpandableText";
+import ExpenseList from "./Expense Tracker/Components/ExpenseTable";
+import ExpenseFilter from "./Expense Tracker/Components/ExpenseFilter";
+import ExpenseForm from "./Expense Tracker/Components/ExpenseForm";
+import categories from "./Expense Tracker/categories";
 
 function App() {
+  const [expenses, setExpense] = useState([
+    { id: 1, description: "Garlic Bread", price: 10, category: "Groceries" },
+    {
+      id: 2,
+      description: "Into the Spider-Verse DVD",
+      price: 12.5,
+      category: "Entertainment",
+    },
+    { id: 3, description: "Chicken", price: 4, category: "Groceries" },
+    {
+      id: 4,
+      description: "Alien Isolation",
+      price: 9.7483,
+      category: "Entertainment",
+    },
+  ]);
+
+  const [selectedCategory, setSelectedCategory] = useState("");
+
+  const visableExpenses = selectedCategory
+    ? expenses.filter((e) => e.category === selectedCategory)
+    : expenses;
+
   return (
     <div>
-      <ExpandableText>
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sequi qui non
-        rerum dolorem id, illo culpa fuga excepturi voluptatibus dicta quae quia
-        consectetur sint consequuntur! Veniam modi, nostrum asperiores
-        dignissimos optio tenetur, ab neque minus corporis, officiis ipsam eius.
-        Autem a omnis, beatae cum mollitia praesentium ullam eaque aliquid at ad
-        facere harum modi fugit vel. Eveniet ratione deserunt deleniti nisi nemo
-        odit, perferendis recusandae, magnam labore tempore sapiente, voluptatum
-        eligendi minus qui culpa nihil quibusdam. Doloremque, enim cum! Ipsa
-        alias exercitationem ullam quis, iste voluptate quaerat quidem fugiat
-        suscipit rem nisi iure eaque saepe voluptas blanditiis molestiae aut
-        similique.
-      </ExpandableText>
+      <div className="mb-4">
+        <ExpenseForm
+          onSubmit={(expense) =>
+            setExpense([...expenses, { ...expense, id: expenses.length + 1 }])
+          }
+        />
+      </div>
+      <div className="mb-3">
+        <ExpenseFilter
+          onSelectCategory={(category) => setSelectedCategory(category)}
+        ></ExpenseFilter>
+      </div>
+
+      <ExpenseList
+        expenses={visableExpenses}
+        onDelete={(id) => setExpense(expenses.filter((e) => e.id !== id))}
+      ></ExpenseList>
     </div>
   );
 }
